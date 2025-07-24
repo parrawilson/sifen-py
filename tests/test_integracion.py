@@ -2,7 +2,10 @@
 import os
 from datetime import date, datetime
 from decimal import Decimal
-from sifen.models.factura import Factura, ItemFactura, Cuota
+from sifen.models.item import ItemFactura
+from sifen.models.cuota import Cuota
+from sifen.models.factura import Factura
+from sifen.models.item_actividades import ItemActividades
 from sifen.models.emisor import Emisor
 from sifen.models.receptor import Receptor
 from sifen.models.datos_transporte import DatosTransporte
@@ -22,6 +25,18 @@ def generar_y_validar_factura():
         # 1. Configuración inicial
         os.makedirs('output', exist_ok=True)
 
+
+        ActividadesEconomicas = [
+            ItemActividades(
+                codigo="62090",
+                descripcion="Laptop Premium",
+            ),
+            ItemActividades(
+                codigo="62020",
+                descripcion="Teclado inalámbrico",
+            )
+        ]
+
         # 2. Crear datos de ejemplo
         emisor = Emisor(
             ruc="80012345",
@@ -35,7 +50,7 @@ def generar_y_validar_factura():
             c_ciudad="1046",
             telefono="0975-257-307",
             email="ventas@tecnologia.py",
-            c_actividad_economica="69201",
+            c_actividad_economica= ActividadesEconomicas,
             c_tipo_regimen="1",
             c_tipo_contibuyente="2",
             sucursal="CASA MATRIZ",

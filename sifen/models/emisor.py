@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
+from .item_actividades import ItemActividades
+from typing import List, Optional
 
 @dataclass
 class Emisor:
@@ -8,6 +10,7 @@ class Emisor:
     nombre: str
     nombre_fantasia: str
     telefono: str
+    c_actividad_economica: List[ItemActividades]
     email: Optional[str] = None
     c_tipo_regimen: str ="1"
     c_departamento: str = "1"  # Ejemplo: 1 para Central
@@ -20,7 +23,6 @@ class Emisor:
     direccion_comp1: Optional[str]= None
     direccion_comp2: Optional[str]= None
     c_tipo_contibuyente: str = "1"
-    c_actividad_economica: str=""
     info_emisor: str ="Sistema de Facturación Electrónica"
     info_fiscal: str = "Documento electrónico generado automáticamente"
     tipo_doc_responsable_DE: str= ""

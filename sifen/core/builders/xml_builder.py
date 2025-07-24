@@ -211,9 +211,11 @@ class XMLBuilder:
         etree.SubElement(g_emis, "dDenSuc").text = factura.emisor.sucursal
         
         # Actividad económica
-        g_act_eco = etree.SubElement(g_emis, "gActEco")
-        etree.SubElement(g_act_eco, "cActEco").text = factura.emisor.c_actividad_economica
-        etree.SubElement(g_act_eco, "dDesActEco").text = constants.ACTIVIDADES_ECONOMICAS.get(factura.emisor.c_actividad_economica, "")
+
+        for itemAct in factura.emisor.c_actividad_economica:
+            g_act_eco = etree.SubElement(g_emis, "gActEco")
+            etree.SubElement(g_act_eco, "cActEco").text = itemAct.codigo
+            etree.SubElement(g_act_eco, "dDesActEco").text = constants.ACTIVIDADES_ECONOMICAS.get(itemAct.codigo, "")
         
         #Responsable de la generación del DE
         g_resp_emi_de = etree.SubElement(g_emis, "gRespDE")
