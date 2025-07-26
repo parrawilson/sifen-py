@@ -61,8 +61,7 @@ class ItemFactura:
             raise ValueError("El precio unitario debe ser positivo.")
         if self.tasa_iva not in (0, 5, 10):  # Ajustar según tasas en Paraguay
             raise ValueError("IVA debe ser 0%, 5% o 10%.")
-        if self.unidad_medida not in ("77", "kg", "m"):  # Ejemplo de códigos
-            raise ValueError("Unidad de medida no válida.")
+        
 
     def _validar_descuentos(self):
         """Valida que los descuentos sean coherentes."""
